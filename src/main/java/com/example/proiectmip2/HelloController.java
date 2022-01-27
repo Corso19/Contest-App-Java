@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,38 +21,42 @@ public class HelloController {
     private Scene scene;
     private DBConnection connection = new DBConnection();
     private PersonsEntity personsEntity = new PersonsEntity();
-    @FXML
-    private Label welcomeText;
+
     @FXML
     private TextField username_input;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     @FXML
     private void onLoginButtonClick(ActionEvent event) throws IOException {
-        personsEntity = connection.Login(username_input.getText());
-        //System.out.println(personsEntity.getNume_echipa());
-        if(personsEntity.isIs_admin() == true)
+        if(username_input.getText().isEmpty())
         {
-            Parent root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setTitle("Main Menu Admin Page");
-            stage.setScene(scene);
-            stage.show();
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+            warningAlert.setTitle("Warning!");
+            warningAlert.setContentText("Introdu un nume de utilizator!");
+            warningAlert.show();
         }
-        else if(personsEntity.isIs_admin() == false)
+        else
         {
-            Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setTitle("Main Menu Page");
-            stage.setScene(scene);
-            stage.show();
+            personsEntity = connection.Login(username_input.getText());
+            //System.out.println(personsEntity.getNume_echipa());
+            if(personsEntity.isIs_admin() == true)
+            {
+                Parent root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setTitle("Main Menu Admin Page");
+                stage.setScene(scene);
+                stage.show();
+            }
+            else if(personsEntity.isIs_admin() == false)
+            {
+                Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setTitle("Main Menu Page");
+                stage.setScene(scene);
+                stage.show();
+            }
         }
-
     }
 }

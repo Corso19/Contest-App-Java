@@ -2,6 +2,7 @@ package com.example.proiectmip2;
 
 
 import Entity.PersonsEntity;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 
@@ -43,8 +44,30 @@ public class DBConnection {
         }
         catch (SQLException e)
         {
-            System.out.println("Persoana nu a fost gasita");
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+            warningAlert.setTitle("Warning!");
+            warningAlert.setContentText("Nu exista un cont cu acest username!");
+            warningAlert.show();
         }
+
+        return null;
+    }
+
+    public PersonsEntity Register(String username, String nume, boolean is_admin) {
+
+        try{
+            PersonsEntity personsEntity = new PersonsEntity();
+            //String sql = ;
+
+            Statement statement = connection.createStatement();
+            //ResultSet resultSet = statement.executeQuery(sql);
+
+        }
+        catch (SQLException e){
+
+        }
+
+
 
         return null;
     }
