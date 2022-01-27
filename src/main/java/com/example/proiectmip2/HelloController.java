@@ -33,13 +33,26 @@ public class HelloController {
 
     @FXML
     private void onLoginButtonClick(ActionEvent event) throws IOException {
-        //personsEntity = connection.Login(username_input.getText());
+        personsEntity = connection.Login(username_input.getText());
         //System.out.println(personsEntity.getNume_echipa());
-        Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Main Menu Page");
-        stage.setScene(scene);
-        stage.show();
+        if(personsEntity.isIs_admin() == true)
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setTitle("Main Menu Admin Page");
+            stage.setScene(scene);
+            stage.show();
+        }
+        else if(personsEntity.isIs_admin() == false)
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setTitle("Main Menu Page");
+            stage.setScene(scene);
+            stage.show();
+        }
+
     }
 }

@@ -8,15 +8,15 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proiectmip2.HelloController">
    <children>
-      <HBox alignment="CENTER" layoutX="54.0" layoutY="131.0" prefHeight="139.0" prefWidth="171.0">
-         <children>
-            <Button mnemonicParsing="false" text="Button" />
-         </children>
-      </HBox>
       <Label alignment="CENTER" layoutX="196.0" layoutY="83.0" text="Welcome to the contest!">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <HBox alignment="CENTER" layoutX="54.0" layoutY="131.0" prefHeight="139.0" prefWidth="171.0">
+         <children>
+            <Button mnemonicParsing="false" text="Button" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
