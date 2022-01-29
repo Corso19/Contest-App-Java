@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proiectmip2.RegisterTeamController">
+   <children>
+      <Label layoutX="197.0" layoutY="54.0" text="Register your new team!">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="teamName_input" layoutX="227.0" layoutY="187.0" promptText="Insert team name here..." />
+      <Button layoutX="252.0" layoutY="356.0" mnemonicParsing="false" onAction="#onRegisterTeamClick" text="Register team" />
+      <Button layoutX="443.0" layoutY="356.0" mnemonicParsing="false" onAction="#onReturnToMenuClick" text="Back to main screen" />
+   </children>
+</AnchorPane>

@@ -54,7 +54,6 @@ public class DBConnection {
     }
 
     public void Register(String username, String nume, Integer idechipa) {
-
         if(connection != null)
         {
             try{
@@ -74,8 +73,6 @@ public class DBConnection {
                     alert.show();
 
                 }
-
-
             } catch (SQLException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Username not availible");
@@ -83,9 +80,31 @@ public class DBConnection {
                 alert.show();
             }
         }
+    }
 
+    public void RegisterTeam(String teamName) {
+        if (connection != null)
+        {
+            try {
+                String sql = "INSERT INTO echipa (nume_echipa) VALUES (?);";
+                PreparedStatement statement = connection.prepareStatement(sql);
 
+                statement.setString(1, teamName);
+                int rows = statement.executeUpdate();
 
+                if(rows > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success!");
+                    alert.setContentText("Team created successfully!");
+                    alert.show();
+                }
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Team name not availible");
+                alert.setContentText("This team name already exists in our database!");
+                alert.show();
+            }
+        }
     }
 
     public DBConnection() {this.start();}

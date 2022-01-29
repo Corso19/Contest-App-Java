@@ -1,6 +1,5 @@
 package com.example.proiectmip2;
 
-
 import Entity.PersonsEntity;
 
 import javafx.event.ActionEvent;
@@ -12,42 +11,37 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
-
-public class RegisterController {
+public class RegisterTeamController {
 
     private Stage stage;
     private Scene scene;
     private DBConnection connection = new DBConnection();
-    private PersonsEntity personsEntity = new PersonsEntity();
 
     @FXML
-    private TextField username_input;
-    @FXML private TextField name_input;
-    @FXML private TextField teamId_input;
+    private TextField teamName_input;
 
     @FXML
-    private void onRegisterAccountClick(ActionEvent event) throws IOException{
-
-        if(username_input.getText().isEmpty() || name_input.getText().isEmpty() || teamId_input.getText().isEmpty())
+    private void onRegisterTeamClick(ActionEvent event) throws IOException {
+        if(teamName_input.getText().isEmpty())
         {
             Alert warningAlert = new Alert(Alert.AlertType.WARNING);
             warningAlert.setTitle("Warning!");
-            warningAlert.setContentText("Make sure that you entered all data for your new account!");
+            warningAlert.setContentText("You need a name for your team!");
             warningAlert.show();
         }
-        else {
-            connection.Register(username_input.getText(), name_input.getText(), Integer.parseInt(teamId_input.getText()));
+        else
+        {
+            connection.RegisterTeam(teamName_input.getText());
             Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setTitle("Login");
             stage.setScene(scene);
             stage.show();
-
         }
     }
 
@@ -62,5 +56,3 @@ public class RegisterController {
     }
 
 }
-
-
