@@ -38,7 +38,6 @@ public class HelloController {
         else
         {
             personsEntity = connection.Login(username_input.getText());
-            //System.out.println(personsEntity.getNume_echipa());
             if(personsEntity.isIs_admin() == true)
             {
                 Parent root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
@@ -50,6 +49,7 @@ public class HelloController {
             }
             else if(personsEntity.isIs_admin() == false)
             {
+                personsEntity.write();
                 Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
@@ -66,6 +66,16 @@ public class HelloController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Register new account");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void onRegisterTeamButtonClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("RegisterTeam.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Register new team");
         stage.setScene(scene);
         stage.show();
     }

@@ -28,7 +28,7 @@ public class DBConnection {
     public PersonsEntity Login(String username) {
         try{
             PersonsEntity personsEntity = new PersonsEntity();
-            String sql = "SELECT persoana.idpersoana, persoana.username, persoana.nume, persoana.is_admin, echipa.nume_echipa FROM persoana JOIN echipa ON persoana.idechipa = echipa.idechipa WHERE username = '"+username+"'";
+            String sql = "SELECT persoana.idpersoana, persoana.username, persoana.nume, persoana.is_admin, echipa.nume_echipa, persoana.idechipa FROM persoana JOIN echipa ON persoana.idechipa = echipa.idechipa WHERE username = '"+username+"'";
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -38,6 +38,7 @@ public class DBConnection {
                 personsEntity.setNume(resultSet.getString("nume"));
                 personsEntity.setIs_admin(resultSet.getBoolean("is_admin"));
                 personsEntity.setNume_echipa(resultSet.getString("nume_echipa"));
+                personsEntity.setIdEchipa(resultSet.getInt("idechipa"));
 
             }
             return personsEntity;
@@ -104,6 +105,37 @@ public class DBConnection {
                 alert.setContentText("This team name already exists in our database!");
                 alert.show();
             }
+        }
+    }
+
+    public void UpdateUserAccount(Integer idpersoana, Integer idechipa, String username, String nume) {
+        try {
+            String sql = "UPDATE persoana SET (username, nume, idechipa) = (?,?,?) WHERE idpersoana = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(4,idpersoana);
+            preparedStatement.setInt(3, idechipa);
+            preparedStatement.setString(1,username);
+            preparedStatement.setString(2,nume);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            System.out.println("Number of records affected: " + affectedRows);
+            if(affectedRows == 0)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Team name not availible");
+                alert.setContentText("This team name already exists in our database!");
+                alert.show();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setContentText("Very nice!");
+                alert.show();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

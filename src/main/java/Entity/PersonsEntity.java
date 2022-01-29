@@ -1,5 +1,8 @@
 package Entity;
 
+import java.io.*;
+import java.util.Scanner;
+
 public class PersonsEntity {
     private Integer id;
     private Integer idechipa;
@@ -66,4 +69,37 @@ public class PersonsEntity {
     public void setNume_echipa(String nume_echipa) {
         this.nume_echipa = nume_echipa;
     }
+
+    public void write() {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\Stefan Acatrinei\\Desktop\\proiectmip2\\src\\main\\java\\Entity\\currentUser.txt");
+            PrintWriter printWriter = new PrintWriter(fileOutputStream);
+            printWriter.write(id + "\n" + idechipa + "\n" + username + "\n" + nume + "\n" + is_admin + "\n" + nume_echipa);
+            printWriter.close();
+            System.out.println("Successfuly wrote to this file");
+        } catch (IOException e) {
+            System.out.println("Error occured");
+            e.printStackTrace();
+        }
+    }
+
+    public void read(){
+        try {
+
+            File myObj = new File("C:\\Users\\Stefan Acatrinei\\Desktop\\proiectmip2\\src\\main\\java\\Entity\\currentUser.txt");
+            Scanner myReader = new Scanner(myObj);
+            id = Integer.parseInt(myReader.nextLine());
+            idechipa = Integer.parseInt(myReader.nextLine());
+            username = myReader.nextLine();
+            nume = myReader.nextLine();
+            is_admin = Boolean.parseBoolean(myReader.nextLine());
+            nume_echipa = myReader.nextLine();
+            myReader.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("An error has occured!");
+            e.printStackTrace();
+        }
+    }
+
 }
