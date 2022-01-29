@@ -53,23 +53,37 @@ public class DBConnection {
         return null;
     }
 
-    public PersonsEntity Register(String username, String nume, boolean is_admin) {
+    public void Register(String username, String nume, Integer idechipa) {
 
-        try{
-            PersonsEntity personsEntity = new PersonsEntity();
-            //String sql = ;
+        if(connection != null)
+        {
+            try{
+                String sql = "INSERT INTO persoane (username, nume ,idechipa, is_admin) VALUES(?,?,?,?)";
+                PreparedStatement statement = connection.prepareStatement(sql);
 
-            Statement statement = connection.createStatement();
-            //ResultSet resultSet = statement.executeQuery(sql);
+                statement.setString(1,username);
+                statement.setString(2, nume);
+                statement.setInt(3, idechipa);
+                statement.setBoolean(4, false);
+                int rows =statement.executeUpdate();
+                if(rows > 0){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success!");
+                    alert.setContentText("Your username is " + username);
+                    alert.show();
 
+                }
+
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Username not availible");
+                alert.setContentText("This username already exists in our database!");
+                alert.show();
+            }
         }
-        catch (SQLException e){
-
-        }
 
 
 
-        return null;
     }
 
     public DBConnection() {this.start();}
