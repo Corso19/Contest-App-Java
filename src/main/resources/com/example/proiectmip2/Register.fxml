@@ -15,7 +15,7 @@
          </padding>
       </TextField>
       <Button layoutX="243.0" layoutY="347.0" mnemonicParsing="false" onAction="#onRegisterAccountClick" text="Register account" />
-      <Button layoutX="523.0" layoutY="347.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="523.0" layoutY="347.0" mnemonicParsing="false" onAction="#onReturnToMenuClick" text="Button" />
       <TextField fx:id="name_input" layoutX="207.0" layoutY="187.0" prefHeight="26.0" prefWidth="186.0" promptText="Insert your full name here...">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

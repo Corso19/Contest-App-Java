@@ -58,7 +58,8 @@ public class DBConnection {
         if(connection != null)
         {
             try{
-                String sql = "INSERT INTO persoane (username, nume ,idechipa, is_admin) VALUES(?,?,?,?)";
+                System.out.println(username);
+                String sql = "INSERT INTO persoana (username, nume ,idechipa, is_admin) VALUES(?,?,?,?);";
                 PreparedStatement statement = connection.prepareStatement(sql);
 
                 statement.setString(1,username);
@@ -73,6 +74,7 @@ public class DBConnection {
                     alert.show();
 
                 }
+
 
             } catch (SQLException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
