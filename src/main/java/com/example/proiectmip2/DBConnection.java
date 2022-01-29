@@ -4,6 +4,7 @@ package com.example.proiectmip2;
 import Entity.PersonsEntity;
 import javafx.scene.control.Alert;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class DBConnection {
@@ -136,6 +137,50 @@ public class DBConnection {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void DeleteUser(String username) {
+        try {
+            String sql = "DELETE FROM persoana WHERE username = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1,username);
+            int affectedrows = preparedStatement.executeUpdate();
+            System.out.println("Number of records affected " +affectedrows);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setContentText("Very nice!");
+            alert.show();
+
+        } catch (SQLException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Team name not availible");
+            alert.setContentText("This team name already exists in our database!");
+            alert.show();
+        }
+    }
+
+    public void RegisterStage(Integer idpersoana, Integer stageid, Integer punctaj, Integer idechipa) {
+        try {
+            String sql = "INSERT INTO final_results (idpersoana, idetapa, idechipa, punctaj) VALUES(?,?,?,?);";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1,idpersoana);
+            preparedStatement.setInt(2,stageid);
+            preparedStatement.setInt(3,idechipa);
+            preparedStatement.setInt(4,punctaj);
+
+            int affectedrows = preparedStatement.executeUpdate();
+            System.out.println("Number of records affected " +affectedrows);
+        } catch (SQLException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Team name not availible");
+            alert.setContentText("This team name already exists in our database!");
+            alert.show();
         }
     }
 

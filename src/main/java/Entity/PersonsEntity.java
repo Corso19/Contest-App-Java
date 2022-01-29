@@ -102,4 +102,17 @@ public class PersonsEntity {
         }
     }
 
+    public void empty() {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\Stefan Acatrinei\\Desktop\\proiectmip2\\src\\main\\java\\Entity\\currentUser.txt");
+            PrintWriter printWriter = new PrintWriter(fileOutputStream);
+            printWriter.write("");
+            printWriter.close();
+            System.out.println("Successfuly wrote to this file");
+        } catch (IOException e) {
+            System.out.println("Error occured");
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -26,7 +26,12 @@ public class MainMenuController {
 
     @FXML
     private void onInscriereEtapaClick(ActionEvent event) throws IOException {
-
+        Parent root = FXMLLoader.load(getClass().getResource("StageRegistrationUser.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Edit account");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -45,7 +50,18 @@ public class MainMenuController {
     }
 
     @FXML private void onLogOutClick(ActionEvent event) throws IOException {
+        personsEntity.empty();
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Login");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML private void onDeleteAccountClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("UserAccountDeletion.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Login");

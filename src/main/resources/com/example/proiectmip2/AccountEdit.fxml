@@ -28,14 +28,8 @@
                   <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
             </TextField>
-            <Label text="Label" />
+            <Label text="Team id" />
             <TextField fx:id="teamId_input" alignment="CENTER">
-               <VBox.margin>
-                  <Insets bottom="15.0" top="15.0" />
-               </VBox.margin>
-            </TextField>
-            <Label text="Label" />
-            <TextField alignment="CENTER">
                <VBox.margin>
                   <Insets bottom="15.0" top="15.0" />
                </VBox.margin>

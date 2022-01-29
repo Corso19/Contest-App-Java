@@ -16,7 +16,7 @@
       </Label>
       <HBox alignment="CENTER" layoutX="39.0" layoutY="64.0" prefHeight="272.0" prefWidth="519.0">
          <children>
-            <Button mnemonicParsing="false" text="Inscriere etapa">
+            <Button mnemonicParsing="false" onAction="#onInscriereEtapaClick" text="Inscriere etapa">
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin></Button>
@@ -24,13 +24,14 @@
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" prefWidth="102.0" text="Clasament">
+            <Button mnemonicParsing="false" onAction="#onClasamentClick" prefWidth="102.0" text="Clasament">
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
-      <Button layoutX="497.0" layoutY="351.0" mnemonicParsing="false" text="Log out" />
+      <Button layoutX="497.0" layoutY="351.0" mnemonicParsing="false" onAction="#onLogOutClick" text="Log out" />
+      <Button layoutX="361.0" layoutY="351.0" mnemonicParsing="false" onAction="#onDeleteAccountClick" text="Delete Account" />
    </children>
 </AnchorPane>
