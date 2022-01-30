@@ -40,6 +40,7 @@ public class HelloController {
             personsEntity = connection.Login(username_input.getText());
             if(personsEntity.isIs_admin() == true)
             {
+                personsEntity.write();
                 Parent root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);

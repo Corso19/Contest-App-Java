@@ -184,6 +184,88 @@ public class DBConnection {
         }
     }
 
+    public void AdminRegisterStage(Integer numaretapa)
+    {
+        try {
+            String sql = "INSERT INTO etapa (numaretapa, is_finished) VALUES  (?,false);";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+
+            preparedStatement.setInt(1, numaretapa);
+
+            int affectedrows = preparedStatement.executeUpdate();
+            System.out.println("Number of records affected: " +affectedrows);
+
+
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Team name not availible");
+            alert.setContentText("This team name already exists in our database!");
+            alert.show();
+        }
+
+    }
+
+    public void AdminDeleteStage(Integer numaretapa)
+    {
+        try{
+            String sql = "DELETE FROM etapa WHERE numaretapa = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1,numaretapa);
+
+            int affectedrows = preparedStatement.executeUpdate();
+            System.out.println("Number of rows affected: " + affectedrows);
+
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Team name not availible");
+            alert.setContentText("This team name already exists in our database!");
+            alert.show();
+        }
+    }
+
+    public void AdminDeleteTeam(String nume_echipa)
+    {
+        try {
+            String sql = "DELETE FROM echipa WHERE nume_echipa = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, nume_echipa);
+
+            int affectedrows = preparedStatement.executeUpdate(sql);
+            System.out.println("Number of rows affected: " + affectedrows);
+
+        } catch (SQLException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Team name not availible");
+            alert.setContentText("This team name does not exist in our database!");
+            alert.show();
+        }
+    }
+
+    public void AdminUpdateTeam(String nume_echipa, Integer idechipa)
+    {
+        try{
+            String sql = "UPDATE echipa SET (nume_echipa) = (?) WHERE idechipa = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1,nume_echipa);
+            preparedStatement.setInt(2,idechipa);
+
+            int affectedrows = preparedStatement.executeUpdate(sql);
+            System.out.println("Number of rows affected: " + affectedrows);
+
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Team id not availible");
+            alert.setContentText("This team id does not exist in our database!");
+            alert.show();
+        }
+    }
+
+
     public DBConnection() {this.start();}
 
 }

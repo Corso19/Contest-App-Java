@@ -40,9 +40,19 @@ public class UserAccountDeletionController {
         } else if (username_input.getText().equals(personsEntity.getUsername()))
         {
             connection.DeleteUser(username_input.getText());
+
+            personsEntity.empty();
+
+            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setTitle("Login");
+            stage.setScene(scene);
+            stage.show();
+
             Alert warningAlert = new Alert(Alert.AlertType.WARNING);
-            warningAlert.setTitle("Warning!");
-            warningAlert.setContentText("You did not enter your username!");
+            warningAlert.setTitle("Success!");
+            warningAlert.setContentText("Very nice!");
             warningAlert.show();
         }
     }

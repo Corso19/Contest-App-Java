@@ -62,6 +62,43 @@ public class AccountEditController {
                 idechipa = Integer.parseInt(teamId_input.getText());
 
             connection.UpdateUserAccount(idpersoana,idechipa,username,nume);
+
+            if(personsEntity.isIs_admin() == true)
+            {
+                Parent root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setTitle("Main Menu");
+                stage.setScene(scene);
+                stage.show();
+            }
+            else if(personsEntity.isIs_admin() == false)
+            {
+                Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setTitle("Main Menu");
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        }
+    }
+
+    @FXML
+    private void onReturnToMenuClick(ActionEvent event) throws IOException{
+
+        if(personsEntity.isIs_admin() == true)
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setTitle("Main Menu");
+            stage.setScene(scene);
+            stage.show();
+        }
+        else if (personsEntity.isIs_admin() == false)
+        {
             Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -69,16 +106,7 @@ public class AccountEditController {
             stage.setScene(scene);
             stage.show();
         }
-    }
 
-    @FXML
-    private void onReturnToMenuClick(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Main Menu");
-        stage.setScene(scene);
-        stage.show();
     }
 
 }

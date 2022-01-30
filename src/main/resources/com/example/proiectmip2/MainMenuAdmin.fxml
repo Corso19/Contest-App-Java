@@ -12,9 +12,9 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="235.0" layoutY="200.0" mnemonicParsing="false" onAction="#onEditAccountClick" prefWidth="130.0" text="Edit account" />
+      <Button layoutX="235.0" layoutY="200.0" mnemonicParsing="false" onAction="#onEditAccountClick" prefHeight="30.0" prefWidth="130.0" text="Edit account" />
       <Button layoutX="235.0" layoutY="141.0" mnemonicParsing="false" onAction="#onStageManagementClick" text="Stage Management" />
-      <Button layoutX="235.0" layoutY="263.0" mnemonicParsing="false" onAction="#onUserManagementClick" prefHeight="30.0" prefWidth="130.0" text="User Management" />
-      <Button layoutX="501.0" layoutY="345.0" mnemonicParsing="false" text="Log out" />
+      <Button layoutX="235.0" layoutY="257.0" mnemonicParsing="false" onAction="#onUserManagementClick" prefHeight="30.0" prefWidth="130.0" text="User Management" />
+      <Button layoutX="501.0" layoutY="345.0" mnemonicParsing="false" onAction="#onLogOutClick" text="Log out" />
    </children>
 </AnchorPane>

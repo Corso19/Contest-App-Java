@@ -28,10 +28,10 @@ public class MainMenuAdminController {
 
     @FXML
     private void onStageManagementClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("AccountEdit.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StageManagementAdmin.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Edit account");
+        stage.setTitle("Stage Management");
         stage.setScene(scene);
         stage.show();
     }
@@ -48,10 +48,21 @@ public class MainMenuAdminController {
 
     @FXML
     private void onUserManagementClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("AccountEdit.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UserManagementAdmin.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("Edit account");
+        stage.setTitle("User Management");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void onLogOutClick(ActionEvent event) throws IOException {
+        personsEntity.empty();
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
     }
