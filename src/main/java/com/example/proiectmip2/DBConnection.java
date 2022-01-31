@@ -1,11 +1,14 @@
 package com.example.proiectmip2;
 
 
+import Entity.FinalResultsEntity;
 import Entity.PersonsEntity;
 import javafx.scene.control.Alert;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBConnection {
 
@@ -228,13 +231,17 @@ public class DBConnection {
     public void AdminDeleteTeam(String nume_echipa)
     {
         try {
-            String sql = "DELETE FROM echipa WHERE nume_echipa = ?;";
+            String sql = "DELETE FROM echipa WHERE nume_echipa = (?);";
+            System.out.println("dasdada");
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            System.out.println("2");
 
             preparedStatement.setString(1, nume_echipa);
+            System.out.println("3");
 
-            int affectedrows = preparedStatement.executeUpdate(sql);
+            int affectedrows = preparedStatement.executeUpdate();
             System.out.println("Number of rows affected: " + affectedrows);
+
 
         } catch (SQLException e)
         {
@@ -248,13 +255,15 @@ public class DBConnection {
     public void AdminUpdateTeam(String nume_echipa, Integer idechipa)
     {
         try{
-            String sql = "UPDATE echipa SET (nume_echipa) = (?) WHERE idechipa = ?;";
+            String sql = "UPDATE echipa SET nume_echipa = (?) WHERE idechipa = (?);";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1,nume_echipa);
+
             preparedStatement.setInt(2,idechipa);
 
-            int affectedrows = preparedStatement.executeUpdate(sql);
+
+            int affectedrows = preparedStatement.executeUpdate();
             System.out.println("Number of rows affected: " + affectedrows);
 
         } catch (SQLException e) {
@@ -262,6 +271,30 @@ public class DBConnection {
             alert.setTitle("Team id not availible");
             alert.setContentText("This team id does not exist in our database!");
             alert.show();
+        }
+    }
+
+    public List<FinalResultsEntity> ViewLeaderboard (Integer idetapa) {
+        try {
+
+
+            List<FinalResultsEntity> finalResultsEntityList = new ArrayList<>();
+            String sql = "SELECT persoana.nume, echipa.nume_echipa, final_results.punctaj FROM final_results INNER JOIN persoana ON persoana.idpersoana = final_results.idpersoana INNER JOIN echipa ON echipa.idechipa = final_results.idechipa WHERE idetapa = '"+idetapa+"' ORDER BY final_results.punctaj DESC";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                FinalResultsEntity finalResultsEntity = new FinalResultsEntity();
+                finalResultsEntity.setNume(resultSet.getString("nume"));
+                finalResultsEntity.setNume_echipa(resultSet.getString("nume_echipa"));
+                finalResultsEntity.setPunctaj(resultSet.getInt("punctaj"));
+                finalResultsEntityList.add(finalResultsEntity);
+            }
+
+            return finalResultsEntityList;
+
+        } catch (SQLException e)
+        {
+            return null;
         }
     }
 

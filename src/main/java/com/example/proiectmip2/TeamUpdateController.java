@@ -41,7 +41,6 @@ public class TeamUpdateController {
         } else {
             connection.AdminUpdateTeam(teamName_input.getText(), Integer.parseInt(teamId_input.getText()));
 
-
             Alert warningAlert = new Alert(Alert.AlertType.CONFIRMATION);
             warningAlert.setTitle("Success!");
             warningAlert.setContentText("Very nice!");

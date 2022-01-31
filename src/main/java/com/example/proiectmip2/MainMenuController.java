@@ -36,7 +36,12 @@ public class MainMenuController {
 
     @FXML
     private void onClasamentClick(ActionEvent event) throws IOException {
-
+        Parent root = FXMLLoader.load(getClass().getResource("Leaderboard.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Edit account");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

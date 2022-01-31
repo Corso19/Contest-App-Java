@@ -48,6 +48,7 @@ public class TeamDeletionController {
             alert.setContentText("Please insert a team name!");
             alert.show();
         } else {
+            System.out.println(teamnameTbd_input.getText());
             connection.AdminDeleteTeam(teamnameTbd_input.getText());
 
             Alert warningAlert = new Alert(Alert.AlertType.CONFIRMATION);

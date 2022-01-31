@@ -1,6 +1,6 @@
-2
-2
-admin1
-admin unu
-true
-AdministrationStaff
+1
+1
+Corso109
+Stefan Acatrinei
+false
+pisicile blande
