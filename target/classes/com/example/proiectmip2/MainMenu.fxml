@@ -16,15 +16,15 @@
       </Label>
       <HBox alignment="CENTER" layoutX="39.0" layoutY="64.0" prefHeight="272.0" prefWidth="519.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#onInscriereEtapaClick" text="Inscriere etapa">
+            <Button mnemonicParsing="false" onAction="#onInscriereEtapaClick" text="Register in stage">
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" onAction="#onEditareContClick" prefWidth="102.0" text="Editare cont">
+            <Button mnemonicParsing="false" onAction="#onEditareContClick" prefWidth="102.0" text="Edit account">
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" onAction="#onClasamentClick" prefWidth="102.0" text="Clasament">
+            <Button mnemonicParsing="false" onAction="#onClasamentClick" prefWidth="102.0" text="Leaderboard">
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin>
