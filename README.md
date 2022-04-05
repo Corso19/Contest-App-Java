@@ -1,2 +1,2 @@
-# proiectmip2
+# Contest App in Java
 proiectmip concurs
